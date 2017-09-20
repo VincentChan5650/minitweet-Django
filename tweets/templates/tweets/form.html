@@ -1,0 +1,8 @@
+{% load bootstrap3 %}
+<form {% if id %} id ='{{ id }}' {% endif %}
+      action="{% if action_url %}{{ action_url }}{% endif %}"
+      method='post' class="form">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  <input type="submit" name='{{ btn_title }}' class='btn btn-default btn-block'>
+</form>

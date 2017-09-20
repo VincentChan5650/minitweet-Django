@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="row jumbotron">
+  <div class='col-sm-4 bg-warning'>
+    <h1>@{{ object.username }}</h1>
+    <a href="{% url 'profiles:follow' username=object.username %}" class='btn btn-primary'>
+      {% if following %}
+        Unfollow
+      {% else %}
+        Follow
+      {% endif %}
+    </a>
+    <p>Followed: <a href="#following">{{ object.profile.get_following.count }}</a></p>
+    <p>Followers: <a href="#followed_by">{{ object.followed_by.all.count }}</a></p>
+  </div>
+  <div class="col-sm-8 pull-left">
+    <h4 class="well">Tweet</h4> <br>
+    {% for tweet in object.tweet_set.all %}
+    <div class="well">
+      {{ tweet.content }} <br>
+      {{ tweet.timestamp|timesince }} ago
+    </div>
+    {% endfor %}
+
+    <h4 id='following' class="well">Following
+    <small>{{ object.profile.get_following.count }}</small>
+    </h4>
+    {% for user in object.profile.get_following %}
+    <div class="panel">
+    <a href="/{{ user.username }}">{{ user.username }}</a>
+    </div>
+    {% empty %}
+    <div class="panel">
+    <h5>Not following any users</h5>
+    </div>
+
+    {% endfor %}
+
+    <h4 id='followed_by' class="well">Followed By
+    <small>{{ object.followed_by.all.count }}</small>
+    </h4>
+    <ul class=''>
+    {% for profile in object.followed_by.all %}
+    <li>
+      <div class="panel">
+      <a href="/{{ profile.user.username }}">{{ profile.user.username }}</a>
+      </div>
+    </li>
+    {% empty %}
+    <li>
+    <div class="panel">
+      <h5>Not followed by any users</h5>
+    </div>
+    </li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>
+
+
+
+{% endblock %}

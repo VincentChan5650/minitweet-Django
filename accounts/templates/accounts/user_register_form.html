@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="container register-form">
+  <div class="col-lg-12">
+    <h2 class='well text-center'>Please Register Here</h2>
+    <form method='post' class="form">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <input type="submit" name='register' class='btn btn-default btn-block'>
+    </form>
+  </div>
+</div>
+{% endblock %}

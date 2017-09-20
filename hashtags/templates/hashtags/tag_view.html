@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-sm-3 col-xs-12">
+    <h1 class='well well-md'>#{{ obj.tag }}</h1>
+  </div>
+  <div class="col-sm-9">
+    <h3 class='jumbotron'>Tweets with #{{ obj.tag }}</h3>
+    {% for tweet in obj.get_tweets %}
+    <div class="well">{{ tweet.content }}</div>
+    <hr>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

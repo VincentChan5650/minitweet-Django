@@ -1,0 +1,27 @@
+body{
+  font-family: 'Work Sans', sans-serif;
+  font-size: 20px;
+  background-color: #bdc3c7; 
+
+}
+.grey-color{
+  color:#7f8c8d;
+}
+.red-color{
+  color:#e74c3c;
+}
+.login-form{
+  text-align: center;
+  margin: 0 auto;
+}
+#mediabody{
+  padding: 10px 15px;
+}
+
+.register-form{
+  width: 60%;
+  margin:20px 20%;
+}
+/*.well{
+  background-color: #bdc3c7;
+}*/

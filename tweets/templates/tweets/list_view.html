@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 well">
+      <h4><a href="/{{ request.user.username }}">@{{ request.user.username }}</a></h4>
+    </div>
+    <div class="col-lg-9">
+    {% if not request.GET.q %}
+        <div class="well">
+            {% include 'tweets/form.html' with form=create_form action_url=create_url btn_title='Tweet' id='tweet-form' %}
+        </div>
+    {% endif %}
+        <h3 class='text-center'>Tweets</h3>
+        <div id="tweet-container" class='well'>
+
+        </div>
+        <a href="#" class='btn btn-info ' id='loadmore'>Load More</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+
+<script src='{% static 'js/script.js' %}'></script>
+{% endblock %}
